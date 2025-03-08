@@ -71,7 +71,7 @@ def run_online_game(agent_id='claude-3.7-sonnet-mcp', email="j.beck@startmunich.
             # NOW create the real environment and submit the action immediately
             logger.info("Creating new environment to submit action...")
             env = ta.make_online(
-                env_id="SpellingBee-v0",
+                env_id=["SpellingBee-v0", "Nim-v0", "Snake-v0", "TruthAndDeception-v0", "Poker-v0", "SimpleNegotiation-v0"],
                 model_name=model_name,
                 model_description=model_description,
                 email=email

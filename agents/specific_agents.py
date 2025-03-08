@@ -12,6 +12,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from .basic_agent import create_agent
 from .mcp_agent import create_dictionary_agent
+from .game_specific_agent import create_game_specific_agent
 import mcp_server
 
 # Dictionary of available specific agents
@@ -77,6 +78,16 @@ register_agent(
     ),
     model_name="Skill-issue-v18",
     model_description="Claude 3.7 Sonnet with dictionary-based word finding"
+)
+
+# Register Game-Specific Agent
+register_agent(
+    agent_id='game-specific-agent',
+    create_fn=lambda: create_game_specific_agent(
+        model_name="anthropic/claude-3.7-sonnet"
+    ),
+    model_name="Game-Specific-Agent-v1",
+    model_description="Adaptive agent that changes behavior based on game type: Spelling Bee (dictionary-enhanced), Poker (always all-in), Other games (base model)"
 )
 
 # Register MCP-enhanced Nova Lite agent
